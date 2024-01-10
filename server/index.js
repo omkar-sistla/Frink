@@ -27,6 +27,7 @@ app.listen(PORT,()=>{
     console.log(`Welcome ${PORT}`);
 })
 
+app.get("/","Hello There");
 app.use("/users",router);
 app.use("/register",registerRoute);
 app.use("/login",loginRoute);
