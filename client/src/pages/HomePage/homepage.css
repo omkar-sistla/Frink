@@ -1,0 +1,30 @@
+.homepage{
+    display: flex;
+}
+.homepage .outerDiv{
+    margin-left: 270px;
+    width: calc(100% - 270px);
+}
+.homepage .feed{
+    margin: auto;
+}
+.homepage .navbar{
+    position: fixed;
+}
+@media(max-width:900px){
+    .homepage .outerDiv{
+        margin-left: 68px;
+        width: calc(100% - 68px);
+    }
+}
+@media(max-width:600px){
+    .homepage .outerDiv{
+        margin-top: 55px;
+        margin-bottom: 62px;
+        margin-left: 0px;
+        width: 100%;
+    }
+    .homepage .outerDiv .feed{
+        width: 100%;
+    }
+}

@@ -1,0 +1,203 @@
+.newPostPage{
+    display: flex;
+    height: 100vh;
+}
+.newPostPage p{
+    margin: 0px;
+}
+.newPost{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgb(207, 207, 207);
+}
+.dark .newPost{
+    box-shadow: 0px 0px 5px rgb(40, 40, 40);
+    background-color: rgb(30, 30, 30);
+}
+.newPost .newPostHeader{
+    display: flex;
+    height: 35px;
+    align-items: center;
+    padding: 0px 10px;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.dark .newPost .newPostHeader{
+    border-bottom: 1px solid rgb(65, 65, 65);
+}
+.newPost .newPostHeader i{
+    user-select: none;
+    cursor: pointer;
+}
+.newPost .newPostHeader .share{
+    font-size: 14px;
+    color: rgb(0, 167, 233);
+    user-select: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+.inner.active{
+    transition: 0.5s;
+    width: 400px;
+    transition: 0.5s;
+}
+.inner{
+    transition: 0.5s;
+    width: 650px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    transition: 0.5s;
+}
+.section1.active{
+    display: flex;
+    width:400px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+}
+.section2.active{
+    display: flex;
+    width:650px;
+    height: 400px;
+}
+.section2.active .postdetails{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    border-left: 1px solid rgb(219, 219, 219);
+}
+.dark .section2.active .postdetails{
+    border-left: 1px solid rgb(65, 65, 65);
+}
+.section2.active .userDetails{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.section2.active .userDetails .profilePic{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+.section2.active .userDetails .username{
+    font-size: 14px;
+    font-weight: 500;
+}
+.section2.active .description{
+    resize: none;
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: 200;
+    padding: 10px;
+    height: 150px;
+    border: none;
+    border-bottom: 1px solid rgb(219, 219, 219);
+}
+.dark .section2.active .description{
+    border-bottom: 1px solid rgb(65, 65, 65);
+    background-color: rgb(30, 30, 30);
+    color: white;
+}
+.section2.active .location{
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid rgb(219, 219, 219);
+}
+.dark .section2.active .location{
+    border-bottom: 1px solid rgb(65, 65, 65);
+    background-color: rgb(30, 30, 30);
+    color: white;
+}
+.section2.active .description:focus,
+.section2.active .location:focus{
+    outline: none;
+}
+.section1,
+.section2{
+    display: none;
+}
+.inner .section2.active .postImage{
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    border-bottom-left-radius: 10px;
+}
+.inner .section2.active img{
+    transition: 0.5s;
+    height: 100%;
+    width: 100%;
+    align-self: center;
+    border-bottom-left-radius: 10px;
+    object-fit: contain;
+    transition: 0.5s;
+}
+.inner .section2 img{
+    transition: 0.5s;
+    width: 0px;
+    transition: 0.5s;
+}
+@media(max-width:740px){
+    .inner{
+        width: calc(100vw - 89px);
+    }
+    .inner.active{
+        width: 90%;
+    }
+    .section1.active{
+        width: 100%;
+    }
+    .section2.active{
+        flex-direction: column;
+        width: 100%;
+    }
+    .inner .section2.active .postImage{
+        width: 100%;
+        height: 50%;
+        border-radius: 0px;
+    }
+    .section2.active .postdetails{
+        height: 40%;
+        width: 100%;
+        border: none;
+        border-top: 1px solid rgb(219, 219, 219);
+    }
+    .dark .section2.active .postdetails{
+        border: none;
+        border-top: 1px solid rgb(65, 65, 65);
+    }
+    .section2.active .description{
+        height: 30%;
+    }
+    .inner .section2.active img{
+        width: 100%;
+        border-radius: 0px;
+    }
+}
+@media(max-width:600px){
+    .newPost{
+        width: 90vw;
+        height: calc(100vh - 135px);
+    }
+    .inner{
+        width: 100%;
+        margin: 0px;
+        height: calc(100% - 36px);
+    }
+    .section2.active{
+        justify-content: space-between;
+        height: 100%;
+    }
+    .inner .section2.active .postImage{
+        height: 60%;
+        width: 100%;
+    }
+    .section2.active .postdetails{
+        height: 40%;
+    }
+}

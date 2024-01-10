@@ -1,0 +1,15 @@
+.registerpage .logincontent{
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+}
+.registerpage .registertag{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    font-weight: bold;
+    color: rgb(130, 130, 130);
+}
+.registerpage .loginLogo{
+    margin-bottom: 20px;
+}

@@ -1,0 +1,69 @@
+.inputContainer{
+    width: fit-content;
+    position: relative;
+}
+.inputContainer input{
+    width: 250px;
+    height: 20px;
+    padding: 8px;
+    background-color: #fafafa;
+    border: 1px solid rgb(209, 209, 209);
+    margin: auto;
+    border-radius: 10px;
+}
+.inputContainer input:focus{
+    outline: 1px solid rgb(67, 184, 231);
+    border:1px solid rgb(67, 184, 231);
+}
+.inputContainer input[type="date"] {
+    text-align: right;
+    color: gray;
+}
+
+.inputContainer label{
+    position: absolute;    
+    padding: 0px 8px;
+    left: 0px;
+    top: 12px;
+    color: gray;
+    font-size: 13.33px;
+    font-family: sans-serif;
+}
+.inputContainer input[type="date"]:focus~label,
+.inputContainer input:valid~label {
+    left: 0px;
+    padding: 2px 8px;
+    top: 0px;
+    transform: translateY(-50%);
+    font-size: 11px;
+    transition: 0.2s;
+    background-color: rgb(67, 184, 231);
+    color: white;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.inputContainer input:valid{
+    color: black;
+    text-align: left;
+}
+.dark .inputContainer input{
+    background-color: rgb(19, 19, 19);
+    border: 1px solid rgb(83, 83, 83);
+    color: gray;
+}
+.dark .inputContainer input[type="date"]:focus~label,
+.dark .inputContainer input:valid~label{
+    background-color: rgb(32, 81, 100);
+}
+.dark .inputContainer input:valid{
+    color: white;
+}
+.dark .inputContainer input:focus{
+    outline: 1px solid  rgb(32, 81, 100);
+    border:1px solid  rgb(32, 81, 100);
+}
+.dark .inputContainer input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: rgb(32, 81, 100);
+    color: white;
+}

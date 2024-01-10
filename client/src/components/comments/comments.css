@@ -1,0 +1,28 @@
+.comment{
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+.comment p{
+    margin: 0px;
+}
+.comment .userPhoto{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+.comment .commentBox{
+    display: flex;
+    flex-direction: column;
+}
+.comment .commentText{
+    display: flex;
+    gap: 5px;
+    white-space: initial;
+}
+.comment .commentText .userName{
+    font-weight: 500;
+}
+.comment .commentBox .time{
+    color: #737373;
+}

@@ -1,0 +1,12 @@
+.App{
+    min-height: 100vh;
+}
+.App.dark{
+    transition: 0.5s;
+    background-color: #000000;
+    color: white;
+    transition: 0.7s;
+}
+.App.light{
+    transition: 0.7s;
+}

@@ -1,0 +1,129 @@
+.loginpage{
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+}
+
+.logincontent{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    gap: 10px;
+    height: fit-content;
+}
+.loginPhoto{
+    width: 350px;
+    height: 350px;
+    margin: auto;    
+}
+.loginpage .outerbox{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: fit-content;
+    border: 1px solid rgb(209, 209, 209);
+}
+.dark .loginpage .outerbox{
+    border: 1px solid rgb(82, 82, 82);
+}
+img.loginLogo{
+    width: 120px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    align-self: center;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    padding: 0px 16px 16px 16px;
+    align-items: center;
+}
+.loginForm button:disabled{
+    background-color: #73C2E1;
+    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loginForm button:disabled:hover{
+    background-color: #73C2E1;
+}
+.dark .loginForm button:disabled{
+    background-color: #486874;
+}
+.dark .loginForm button:disabled:hover{
+    background-color: #486874;
+}
+.loginForm .loadingAnimation{
+    height: 32px;
+    margin: auto;
+}
+.loginForm button{
+    width: 268px;
+    height: 40px;    
+    background-color: rgb(67, 184, 231);
+    border: none;
+    cursor: pointer;
+    margin: auto;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.loginForm button:hover{
+    background-color: rgb(10, 173, 238);
+}
+.dark .loginForm button{
+    background-color: rgb(32, 81, 100);
+}
+.dark .loginForm button:hover{
+    background-color: rgb(26, 78, 99);
+}
+.loginpage p{
+    align-self: center;
+    margin-bottom: 0px;
+}
+.loginpage b{
+    color: rgb(211, 0, 0);
+    font-size: 13px;
+}
+
+@media(max-width:900px){
+    .loginPhoto{
+        display: none;
+    }
+    .loginpage .logincontent{
+        margin-top: 15vh;
+        margin-bottom: 15vh;
+    }
+}
+@media(max-width:600px){
+    .logincontent{
+        max-width: 90vw;
+    }
+    .loginpage .outerbox,
+    .dark .loginpage .outerbox{
+        border: 0px;
+        width:99vw;
+    }
+    .loginpage .inputContainer input{
+        width: calc(75vw - 18px);
+    }
+    .loginForm button{
+        width: 75vw;
+    }
+    .loginpage .loginForm{
+        padding: 0px 0px 16px 0px;
+        align-items: center;
+    }
+    .loginpage .fileInput .inputContainer{
+        width: 75vw;
+    }
+    .loginpage .fileInput input{
+        width: calc(75vw - 30px);
+        padding: 15px;
+    }
+    .loginpage .loginLogo{
+        margin-top: 0px;
+    }
+}

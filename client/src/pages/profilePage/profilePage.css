@@ -1,0 +1,127 @@
+.profilepage{
+    display: flex;
+    gap: 100px;
+}
+.profilepage .profile{
+    width: 950px;
+    margin: auto;
+    margin-top: 0px;
+}
+.profilepage .profile p{
+    margin: 0;
+}
+.profilepage .profileHeader{
+    display: flex;
+    gap: 50px;
+    padding: 30px 30px 50px 30px;
+    border-bottom: 1px solid gray;
+
+}
+.profilepage .profileHeader .profilePageProfilePhoto{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.profilepage .profileHeader .profilePageProfilePhoto.small{
+    display: none;
+}
+.profilepage .profileHeader .profileDetails{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.profilepage .profileHeader .row{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.profilepage .profileHeader .counts{
+    display: flex;
+    gap: 5px;
+}
+.profilepage .profileHeader .counts .count{
+    font-weight: 600;
+}
+.profilepage button{
+    height: fit-content;
+    align-self: center;
+    border: none;
+    padding: 7px 15px;
+    font-weight: 550;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 10px;
+    background-color: #EFEFEF;
+    cursor: pointer;
+}
+.profilepage  button.follow{
+    background-color: rgb(67, 184, 231);
+    color: white;
+}
+.dark .profilepage  button.follow{
+    background-color: rgb(32, 81, 100);
+}
+.profilepage button:hover{
+    background-color: #e2e2e2;
+}
+.profilepage button.follow:hover{
+    background-color: rgb(10, 173, 238);
+}
+.dark .profilepage button.follow:hover{
+    background-color: rgb(26, 78, 99);
+}
+.profilepage .profileHeader .username{
+    font-size: 20px;
+}
+.profilepage .profileHeader .displayname{
+    font-weight: 500;
+}
+@media(max-width:900px){
+    .profilepage{
+        display: flex;
+        gap: 0px;
+    }
+    .profilepage .profile{
+        width: 90%;
+    }
+    .profilepage .profileHeader .profilePageProfilePhoto{
+        display: none;
+    }
+    .profilepage .profileHeader .profileDetails{
+        width: 100%;
+    }
+    .profilepage .profileHeader .profilePageProfilePhoto.small{
+        display: flex;
+        width: 77px;
+        height: 77px;
+    }
+}
+@media(max-width:600px){
+    .profilepage{
+        flex-direction: column;
+        margin-top: 35px;
+    }
+    .profilepage .profile{
+        width: 100%;
+    }
+    .profilepage .profileHeader{
+        padding-bottom: 10px;
+    }
+    .profile .profileHeader .innerRow{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .profileHeader .countsRow{
+        order: 1;
+        justify-content: space-between;
+    }
+    .profilepage .profileHeader .counts{
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
+    }
+    .profilepage .profile .profileHeader .counts p{
+        margin: 0px;
+    }
+}
