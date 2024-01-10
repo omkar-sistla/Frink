@@ -78,6 +78,7 @@ export default function LoginPage(){
                         <p>Don't have an account? </p>
                         <button onClick={()=>{navigate("/signup")}}>SignUp</button>
                     </form>  
+                    <p>test</p>
                 </div>
             </div>
         </div>
