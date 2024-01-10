@@ -18,7 +18,7 @@ export default function ProfilePage(){
         if (user && user.id && token) {
             try {
                 await axios.patch(
-                    `http://localhost:8800/users/follow/${user.id}/${userProfile.id}`,
+                    `https://frink-backend.vercel.app/users/follow/${user.id}/${userProfile.id}`,
                     {
                         id: user.id
                     },
@@ -37,7 +37,7 @@ export default function ProfilePage(){
     };
     const updateUser = async()=>{
         try{
-            const response = await axios.post("http://localhost:8800/updateuser",
+            const response = await axios.post("https://frink-backend.vercel.app/updateuser",
                 {
                     id:user.id
                 },
@@ -62,11 +62,11 @@ export default function ProfilePage(){
         } else{
             try{
                 const response = user
-                ? await axios.get(`http://localhost:8800/users/${username}?id=${user.id}`, 
+                ? await axios.get(`https://frink-backend.vercel.app/users/${username}?id=${user.id}`, 
                 {
                     headers: { Authorization: `Frink ${token}` }
                 })
-                : await axios.get(`http://localhost:8800/users/${username}`,{headers: { Authorization: `Frink ${token}` }});                
+                : await axios.get(`https://frink-backend.vercel.app/users/${username}`,{headers: { Authorization: `Frink ${token}` }});                
                 setUserProfile(response.data);
             } catch(err){
                 console.log(err.response.data);

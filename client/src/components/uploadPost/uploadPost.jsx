@@ -32,7 +32,7 @@ export default function NewPost(){
                 const imagelink = imageResponse.data.secure_url;
                 postData.img=imagelink;
             }
-            const response = await axios.post("http://localhost:8800/newpost", postData, {
+            const response = await axios.post("https://frink-backend.vercel.app/newpost", postData, {
                 headers: { Authorization: `Frink ${token}` },
                 withCredentials: true
             });

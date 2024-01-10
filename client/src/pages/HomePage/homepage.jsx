@@ -69,7 +69,7 @@ export default function HomePage(){
     const token = useSelector((state)=>state.token);
     const getFeed = async()=>{
         try{
-            const response = await axios.get("http://localhost:8800/feed",{headers: { Authorization: `Frink ${token}` }});
+            const response = await axios.get("https://frink-backend.vercel.app/feed",{headers: { Authorization: `Frink ${token}` }});
             setFeed(response.data);
         } catch(err){
             console.log(err.response.data);

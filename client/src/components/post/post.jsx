@@ -57,7 +57,7 @@ export default function Post(props){
             navigate("/")
         } else{
             try{
-                const response = await axios.patch(`http://localhost:8800/${post._id}/like`,null,{headers: {Authorization: `Frink ${token}`,},});
+                const response = await axios.patch(`https://frink-backend.vercel.app/${post._id}/like`,null,{headers: {Authorization: `Frink ${token}`,},});
                 setCurrentPost((prev)=>({...prev,likes:response.data.likes}));
             } catch(err){
                 console.log(err);
@@ -71,7 +71,7 @@ export default function Post(props){
         } else{
             setCommentLoading(true);
             try{
-                const response = await axios.patch(`http://localhost:8800/${post._id}/comment`,{comment:newComment},{headers: {Authorization: `Frink ${token}`,},});
+                const response = await axios.patch(`https://frink-backend.vercel.app/${post._id}/comment`,{comment:newComment},{headers: {Authorization: `Frink ${token}`,},});
                 console.log(response);
                 setCurrentPost((prev)=>({...prev,comments:response.data.comments}));
             } catch(err){
@@ -84,7 +84,7 @@ export default function Post(props){
     }
     const handleViewComment = async() => {
         try{
-            const response=await axios.get(`http://localhost:8800/${post._id}/comments`,{headers: {Authorization: `Frink ${token}`,},});
+            const response=await axios.get(`https://frink-backend.vercel.app/${post._id}/comments`,{headers: {Authorization: `Frink ${token}`,},});
             console.log(response);
             setComments(response.data);
             console.log(comments);
