@@ -95,7 +95,7 @@
         height: 77px;
     }
 }
-@media(max-width:600px){
+@media(max-width:600px),(max-height:450px){
     .profilepage{
         flex-direction: column;
         margin-top: 35px;

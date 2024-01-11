@@ -17,7 +17,7 @@
         width: calc(100% - 68px);
     }
 }
-@media(max-width:600px){
+@media(max-width:600px),(max-height:450px){
     .homepage .outerDiv{
         margin-top: 55px;
         margin-bottom: 62px;
