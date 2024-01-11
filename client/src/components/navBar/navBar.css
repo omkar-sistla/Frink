@@ -181,7 +181,7 @@
         margin: auto;
     }
 }
-@media(max-width:600px){
+@media(max-width:600px),(max-height:450px){
     .navbar{
         float: none;
         width:calc(100vw - 20px);
