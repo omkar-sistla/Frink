@@ -103,6 +103,9 @@
     border: none;
     font-family: sans-serif;
 }
+.dark .post .commentField textarea{
+    color: white;
+}
 .post .commentField textarea:focus{
     outline: none;
 }
