@@ -7,6 +7,7 @@
     text-align: left;
     padding: 10px;
     background-color: white;
+    z-index: 9999;
 }
 .dark .navbar{
     border-right: 1px solid rgb(67, 67, 67);

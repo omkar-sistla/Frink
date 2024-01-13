@@ -13,8 +13,9 @@
 }
 .post .postHeader{
     display: flex;
-    gap: 10px;
-    padding: 10px 10px;
+    padding: 10px 0px 10px 10px;
+    justify-content: space-between;
+    align-items: center;
 }
 .post .postHeader .userDetails{
     display: flex;
@@ -50,13 +51,51 @@
     font-size: 14px;
     color: #737373;
 }
+.post .postHeader i{
+    font-size: 20px;
+    cursor: pointer;
+}
+.post .postHeader .postOptions{
+    position: relative;
+    z-index: 0;
+}
+.post .postHeader .postOptions .options{
+    display: none;
+}
+.post .postHeader .postOptions .options.active{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px rgba(24, 24, 24, 0.403);
+    padding: 10px;
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    background-color: white;
+}
+.dark .post .postHeader .postOptions .options.active{
+    background-color: rgb(44, 44, 44);
+    box-shadow: 0px 0px 5px rgb(76, 76, 76);
+}
+.post .postHeader .postOptions .option{
+    display: flex;
+    padding: 8px 20px;
+    gap: 5px;
+    cursor: pointer;
+}
+.post .postHeader .postOptions .option:hover{
+    background-color: rgb(231, 231, 231);
+}
+.post .postHeader .postOptions .option.delete{
+    border-top:1px solid rgb(195, 195, 195) ;
+    color: red;
+}
 .liked.material-symbols-outlined {
     font-variation-settings:
     'FILL' 1,
     'wght' 400,
     'GRAD' 0,
     'opsz' 24
-  }
+}
 .postHeader .location{
     font-size: 12px;
 }
@@ -89,6 +128,19 @@
     font-weight: 500;
     cursor:pointer;
 }
+.post .viewCommentsDiv{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+.post .viewComments{
+    cursor: pointer;
+}
+.post .viewCommentsDiv .gettingComments{
+    width: 16px;
+    height: 16px;
+}
 .post .commentField{
     display: flex;
     width: 100%;
@@ -96,7 +148,7 @@
 }
 .post .commentField textarea{
     background-color: transparent;
-    padding: 8px;
+    padding: 10px;
     width: 100%;
     height:16px ;
     resize: none;
@@ -120,6 +172,19 @@
     display: block;
     color: rgb(0, 183, 255);
     font-weight: 500;
+    cursor: pointer;
+}
+.post .viewAndHideComments{
+    display: flex;
+    padding: 0px 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+.post .comments .commentsHeading{
+    font-weight: 500;
+}
+.post .comments .hideComments{
+    font-size: 12px;
     cursor: pointer;
 }
 @media(max-width:600px),(max-height:450px){
