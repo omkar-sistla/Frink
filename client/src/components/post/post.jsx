@@ -43,14 +43,20 @@ export function convertTime(timeStr) {
 
 export default function Post(props){
     const post = props.post
+    const onDelete = props.onDelete;
     const token = useSelector((state)=>state.token);
     const user = useSelector((state)=>state.user);
+    const mode = useSelector((state)=>state.mode);
+    const assets = "https://res.cloudinary.com/dl5qnhrkx/image/upload/v1705028150/Frink%20Assets/";
     const userId = user.id;        
     const [currentPost,setCurrentPost] = useState(post);
     const [newComment,setNewComment] = useState("");
     const [isLiked, setIsLiked] = useState(currentPost.likes[userId])
     const [commentLoading, setCommentLoading]=useState(false);
     const [comments, setComments]=useState(null);
+    const [showComments, setShowComments] = useState(false);
+    const [gettingComments, setGettingComments] = useState(false);
+    const [moreActive, setMoreActive] = useState(false);
     const navigate = useNavigate();
     const likepost = async()=>{
         if(!token){
@@ -74,6 +80,7 @@ export default function Post(props){
                 const response = await axios.patch(`https://frink-backend.vercel.app/${post._id}/comment`,{comment:newComment},{headers: {Authorization: `Frink ${token}`,},});
                 console.log(response);
                 setCurrentPost((prev)=>({...prev,comments:response.data.comments}));
+                getComments();
             } catch(err){
                 console.log(err);
             }
@@ -82,15 +89,26 @@ export default function Post(props){
             setCommentLoading(false);
         }
     }
-    const handleViewComment = async() => {
+    const getComments = async() => {
+        setGettingComments(true);        
         try{
             const response=await axios.get(`https://frink-backend.vercel.app/${post._id}/comments`,{headers: {Authorization: `Frink ${token}`,},});
-            console.log(response);
-            setComments(response.data);
-            console.log(comments);
+            setComments(response.data);            
+            setShowComments(true);
         } catch(err){
             console.log(err);
         }
+        setGettingComments(false);
+    }
+    const handleViewComments = ()=>{
+        if (!comments){
+            getComments();
+        } else{
+            setShowComments(true);
+        }
+    }
+    const handleDelete = ()=>{
+        onDelete();
     }
     useEffect(()=>{
         setIsLiked(currentPost.likes[userId]);
@@ -109,6 +127,19 @@ export default function Post(props){
                         <p className="location">{currentPost.location}</p>
                     </div>
                 </div>
+                {post.userId._id===userId && <div className="postOptions">
+                    <i className="material-symbols-outlined more" onClick={()=>setMoreActive(!moreActive)}>more_vert</i>
+                    <div className={moreActive?"options active":"options"}>
+                        <div className="option edit">
+                            <i className="material-symbols-outlined">edit</i>
+                            <p>Edit</p>
+                        </div>
+                        <div className="option delete" onClick={handleDelete}>
+                            <i className="material-symbols-outlined">delete</i>
+                            <p>Delete</p>
+                        </div>
+                    </div>
+                </div>}
             </div>
             <div className="postbody">
                 <img src={post.img} alt="post"/>
@@ -124,9 +155,19 @@ export default function Post(props){
                     <span className="username">{currentPost.userId.username}</span>
                     <p>{currentPost.desc}</p>
                 </div>}
-                {currentPost.comments && currentPost.comments.length>0 &&
-                <p onClick={handleViewComment}>{"view "+currentPost.comments.length+" comments"}</p>}
-            </div>
+                {!showComments && currentPost.comments && currentPost.comments.length>0 &&
+                <div className="viewCommentsDiv">
+                    <p onClick={handleViewComments} className="viewComments">{"view "+currentPost.comments.length+" comments"}</p>
+                    {gettingComments && <img src={mode==="light" ? assets+"loadingLight.gif" : assets+"loadingDark.gif"} className="gettingComments"/>}
+                </div>}
+            </div>            
+            {comments && showComments && <div className="comments">
+                <div className="viewAndHideComments">
+                    <p className="commentsHeading">Comments</p>
+                    <p className="hideComments" onClick={()=>setShowComments(false)}>Hide</p>
+                </div>
+                {comments.map((comment)=>(<Comments key={comment._id} comment={comment} />))}
+            </div>}
             <div className="commentField">
                 <textarea placeholder="Add a comment" onChange={(e) => setNewComment(e.target.value)} value={newComment}></textarea>
                 {
@@ -135,9 +176,7 @@ export default function Post(props){
                     :<p className={newComment==="" ? "commentPost" : "commentPost active"}>loading</p>
                 }
             </div>
-            {comments && <div>
-                {comments.map((comment)=>(<Comments key={comment._id} comment={comment} />))}
-            </div>}
+
         </div>
     )
 }

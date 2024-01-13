@@ -23,6 +23,29 @@ export const createPostController = async(req,res) => {
     }
 }
 
+export const deletePostController = async (req, res) => {
+    const postId = req.params.id;
+    console.log(postId);
+    try {
+        const post = await Post.findById(postId);
+        const commentIds = post.comments; 
+        if (!post) {
+            return res.status(404).json({ message: 'Post not found.' });
+        }
+        if (post.userId !== req.user.id) {
+            return res.status(403).json({ message: 'You do not have permission to delete this post.' });
+        }
+        const user = await User.findById(post.userId);
+        user.posts = user.posts.filter(post => post._id.toString() !== postId);
+        await user.save();
+        await Comment.deleteMany({ _id: { $in: commentIds } });
+        await Post.findByIdAndDelete(postId);
+        res.status(200).json({ message: 'Post deleted successfully' });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
 export const getFeedController = async(req,res) => {
     const userId = req.user.id;
     try {
