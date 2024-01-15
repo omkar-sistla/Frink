@@ -97,6 +97,7 @@ export const getUpdatedUser = async(req, res) => {
             const user = await User.findById(id);
             const userDetails = {
                 "username":user.username,
+                "posts":user.posts.length,
                 "displayName":user.firstName+" "+user.lastName,
                 "email":user.email,
                 "followers":user.followers.length,

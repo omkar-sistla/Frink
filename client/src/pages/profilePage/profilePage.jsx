@@ -97,7 +97,7 @@ export default function ProfilePage(){
                             </div>
                             <div className="row countsRow">
                                 <div className="counts">
-                                    <p className="count">{user.followers}</p>
+                                    <p className="count">{user.posts}</p>
                                     <p className="field">posts</p>
                                 </div>
                                 <div className="counts">
@@ -143,7 +143,7 @@ export default function ProfilePage(){
                             </div>
                             <div className="row countsRow">
                                 <div className="counts">
-                                    <p className="count">{userProfile.followers}</p>
+                                    <p className="count">{userProfile.posts}</p>
                                     <p className="field">posts</p>
                                 </div>
                                 <div className="counts">
