@@ -32,6 +32,23 @@ export const getUserController = async (req, res) => {
     }
 };
 
+export const searchUserController = async(req,res)=>{
+    try{
+        const searchTerm = req.params.q;
+        console.log(searchTerm);
+        const users = await User.find({
+            $or:[
+                { username: { $regex: `^${searchTerm}`, $options: 'i' } },
+                { firstName: { $regex: `^${searchTerm}`, $options: 'i' } },
+                { lastName: { $regex: `^${searchTerm}`, $options: 'i' } },
+            ],
+        }).select("username firstName lastName profilePhoto");
+        res.status(200).json(users);
+    } catch (err) {
+        res.status(404).json({ message: err.message });
+    }
+};
+
 export const getFollowersController = async (req, res) => {
     try {
         const { id } = req.params;

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./navBar.css"
 import { useSelector } from "react-redux";
 import ThemeSwitch from "../themeSwitch/themeSwitch";
+import axios from 'axios';
 
 export default function NavBar(){
     const assetsLink = "https://res.cloudinary.com/dl5qnhrkx/image/upload/v1704437765/Frink%20Assets/"
@@ -13,8 +14,31 @@ export default function NavBar(){
     const [activeSearch, setActiveSearch] = useState(false);
     const [profilePhoto, setProfilePhoto] = useState("./assets/logo.jpeg");
     useEffect(()=>{
-            user && setProfilePhoto(user.profilePhoto);    
+        user && setProfilePhoto(user.profilePhoto);    
     },[user]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setsearchResults]=useState([]);
+    const handleSearch = async()=>{
+        try{
+            if (searchTerm!==""){
+                const response = await axios.get(`https://frink.vercel.app/users/searchuser/${searchTerm}`);
+                setsearchResults(response.data);
+                console.log(response.data);
+                console.log(searchResults);
+            } else{
+                setsearchResults([]);
+            }
+        } catch(err){
+            console.log(err);
+        }
+    }
+    const handleSearchClick = (user)=>{
+        navigate(`/profile/${user.username}`);
+        toggleSearch();
+    }
+    useEffect(()=>{
+        handleSearch();
+    },[searchTerm]);
     const toggleSearch = ()=>{
         if(compressNav===activeSearch){
             setActiveSearch(!activeSearch);
@@ -65,7 +89,18 @@ export default function NavBar(){
                 </div>            
             </div>
             <div className={activeSearch?"searchBox active":"searchBox"}>
-                <input placeholder="search" className="searchBoxSearch" type="text"/>
+                <input placeholder="search" className="searchBoxSearch" type="text" onChange={(e)=>{setSearchTerm(e.target.value)}}/>
+                <div className="searchresults">
+                    {searchResults.map((user)=>(
+                        <div className="searchedUser" key={user._id} onClick={()=>handleSearchClick(user)}>
+                            <img className="profilePhoto" alt="" src={user.profilePhoto}/>
+                            <div className="userdetails">
+                                <p className="username">{user.username}</p>
+                                <p className="displayname">{user.firstName+" "+user.lastName}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )
