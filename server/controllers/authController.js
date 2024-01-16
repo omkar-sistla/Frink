@@ -58,6 +58,7 @@ export const loginController = async(req,res)=>{
             } else{
                 const userDetails = {
                     "username":user.username,
+                    "posts":user.posts.length,
                     "displayName":user.firstName+" "+user.lastName,
                     "email":user.email,
                     "followers":user.followers.length,
@@ -65,7 +66,8 @@ export const loginController = async(req,res)=>{
                     "bio":user.bio,
                     "city":user.city,
                     "profilePhoto":user.profilePhoto,
-                    "id":user._id
+                    "id":user._id,
+                    "userPosts":user.posts,
                 };
                 console.log(userDetails);
                 sendToken(userDetails, res);
@@ -105,7 +107,8 @@ export const getUpdatedUser = async(req, res) => {
                 "bio":user.bio,
                 "city":user.city,
                 "profilePhoto":user.profilePhoto,
-                "id":user._id
+                "id":user._id,
+                "userPosts":user.posts,
             };
             sendToken(userDetails, res);
         } else{

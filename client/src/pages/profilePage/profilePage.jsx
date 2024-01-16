@@ -6,6 +6,7 @@ import axios from "axios";
 import './profilePage.css';
 import NavBar from "../../components/navBar/navBar";
 import { setLogin } from "../../Redux/reducer";
+import PostsGrid from "../../components/postsGrid/postsgrid";
 
 export default function ProfilePage(){
     const navigate = useNavigate();
@@ -115,7 +116,7 @@ export default function ProfilePage(){
                             </div>
                         </div>
                     </div>}
-                    <div><button onClick={()=>{navigate("/profile/Pattabhi")}}>Click</button></div>
+                    <PostsGrid posts={user.userPosts}/>
                 </div>
             </div>
         )
@@ -162,7 +163,9 @@ export default function ProfilePage(){
                         </div>
                     </div>}
                     {!userProfile.isPrivate || userProfile.isFollowing 
-                    ? <div><button onClick={()=>{navigate("/profile/Pattabhi")}}>Click</button></div>
+                    ? <div>
+                    {<PostsGrid posts={userProfile.profileposts}/>}
+                    </div>                    
                     :<div>This account is Private</div>}
                 </div>
             </div>
