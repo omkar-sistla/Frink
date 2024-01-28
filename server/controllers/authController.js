@@ -10,9 +10,9 @@ export const registerController = async(req,res)=>{
             password,
             firstName,
             lastName,
-            profilePhoto,
             date_of_birth
         } = req.body;
+        const profilePhoto = req.body.profilePhoto===""?"https://res.cloudinary.com/dl5qnhrkx/image/upload/v1704699496/Frink%20Assets/default%20user.png" : req.body.profilePhoto;
         const [emailExists, usernameExists] = await Promise.all([
             User.findOne({ email }),
             User.findOne({ username }),
