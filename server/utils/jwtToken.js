@@ -7,7 +7,8 @@ export const sendToken = (userDetails, res) => {
     const token = jwt.sign({user:userDetails}, secret); // Fix here
     const options = {
         expires: new Date(Date.now() + 3 * 60 * 60 * 1000),
-        httpOnly: true
+        httpOnly: true,
+        secure:true,
     };
 
     res.status(200).cookie("token", token, options).json({user:userDetails,token:token});
