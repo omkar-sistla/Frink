@@ -92,6 +92,11 @@ export const logoutController = async(req,res)=>{
     }
 };
 
+export const autoLogoutController = async(req,res)=>{
+    const message = "success";
+    res.status(200).json(message);
+}
+
 export const getUpdatedUser = async(req, res) => {
     try{
         const {id} = req.body;
