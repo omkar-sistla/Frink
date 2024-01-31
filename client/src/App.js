@@ -17,7 +17,7 @@ function App() {
   useEffect(()=>{
     const autoLogout = async()=>{
       try{
-        const response = await axios.get("http://localhost:8800/",{headers: { Authorization: `Frink ${token}` }});
+        const response = await axios.get("https://frink-backend.vercel.app/",{headers: { Authorization: `Frink ${token}` }});
         if (response.data === "Please Login"){
           dispatch(setLogin({
             user:null,
