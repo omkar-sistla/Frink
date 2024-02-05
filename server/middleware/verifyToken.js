@@ -12,15 +12,20 @@ export const verifyToken = async(req,res,next) => {
         }
         const verified = jwt.verify(token, process.env.SECRET);
         const expires = verified.expires;
+        console.log(expires);
         const currentDate = new Date(Date.now());
+        console.log(currentDate);
         if(!expires){
             return res.status(403).send("Please Login");
-        } else if(expires<currentDate){
-            return res.status(403).send("Please login");
-            
         } else{
-            req.user = verified.user;
-        }
+            const expiresDate = new Date(expires);
+            console.log(expiresDate);
+            if(expiresDate<currentDate){
+                return res.status(403).send("Please login");   
+            } else{
+                req.user = verified.user;
+            }
+        }  
         next();
     } catch(err){
         res.status(500).json("Internal Server Error");
