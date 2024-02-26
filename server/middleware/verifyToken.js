@@ -12,9 +12,7 @@ export const verifyToken = async(req,res,next) => {
         }
         const verified = jwt.verify(token, process.env.SECRET);
         const expires = verified.expires;
-        console.log(expires);
         const currentDate = new Date(Date.now());
-        console.log(currentDate);
         if(!expires){
             return res.status(403).send("Please Login");
         } else{

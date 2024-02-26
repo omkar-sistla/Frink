@@ -161,3 +161,33 @@ export const acceptRequestController = async (req,res) => {
         res.status(404).json({ message: err.message });
     }
 }
+
+export const getRecUserController = async(req,res)=>{
+    try{
+        const id=req.params.id
+        if (!id){
+            res.status(500).json("Forbidden User")
+        } else{
+            const user = await User.findById(id);
+            const followingIds = user.followings
+            const followedByFollowings = await User.find({ _id : {$in:followingIds}}).select('followings');
+            const followedByFollowingsIds = followedByFollowings.flatMap(user => user.followings);
+            const recommendedUsers = await User.find({
+                _id: { $in: followedByFollowingsIds, $nin:[...followingIds,id] }
+            }).limit(20).select('username profilePhoto')
+            if(recommendedUsers.length>20){
+                res.status(200).json(recommendedUsers);
+            } else{
+                console.log(followedByFollowingsIds);
+                // console.log(followingIds);
+                const moreRecommendations = await User.find({
+                    _id: { $nin: [...followingIds,id]}
+                }).limit(20).select('username profilePhoto')
+                res.status(200).json(moreRecommendations);
+            }
+        }
+    } catch(err){
+        // console.log(err)
+        res.status(404).json({message: "Internal Server Error"})
+    }
+}

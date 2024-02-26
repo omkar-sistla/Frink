@@ -2,11 +2,24 @@
     display: flex;
 }
 .homepage .outerDiv{
+    display: flex;
+    justify-content: center;
     margin-left: 270px;
     width: calc(100% - 270px);
 }
-.homepage .feed{
-    margin: auto;
+.homepage .outerDiv.newUser{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.homepage .innerDiv{
+    display: flex;
+    width: 100%;
+    gap: 64px;
+    justify-content: center;
+}
+.homepage .recommendation_sec{
+    justify-self: flex-start;
 }
 .homepage .navbar{
     position: fixed;
@@ -16,8 +29,12 @@
         margin-left: 68px;
         width: calc(100% - 68px);
     }
+    .homepage .innerDiv{
+        flex-direction: column-reverse;
+        gap: 0px;
+    }
 }
-@media(max-width:600px),(max-height:450px){
+@media(max-width:600px){
     .homepage .outerDiv{
         margin-top: 55px;
         margin-bottom: 62px;

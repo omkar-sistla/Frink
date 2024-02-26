@@ -5,6 +5,7 @@ import "./homepage.css";
 import NavBar from "../../components/navBar/navBar";
 import Post from "../../components/post/post";
 import axios from 'axios'
+import Recommendations from "../../components/recommendations/recommendations";
 
 export default function HomePage(){
     const[feed,setFeed] = useState(null);
@@ -28,14 +29,39 @@ export default function HomePage(){
             console.log(err);
         }
     }
-    return(
-        <div className="homepage">
-            <NavBar/>
-            <div className="outerDiv">
-                {feed && <div className="feed">
-                    {feed.map((post)=>(<Post key={post._id} post={post} onDelete={()=>deletePost(post._id)}/>))}
-                </div>}
+    if (feed && feed.length>0){
+        return(
+            <div className="homepage">
+                <NavBar/>
+                <div className="outerDiv">
+                    <div className="innerDiv">
+                        {
+                            feed && (feed.length>2 ? 
+                            <div className="feed">
+                                {feed.slice(0,2).map((post)=>(<Post key={post._id} post={post} onDelete={()=>deletePost(post._id)}/>))}
+                                <Recommendations class="smallScreen"/>
+                                {feed.slice(2).map((post)=>(<Post key={post._id} post={post} onDelete={()=>deletePost(post._id)}/>))}
+                            </div> : 
+                            feed.length>0 && <div className="feed">
+                                {feed.map((post)=>(<Post key={post._id} post={post} onDelete={()=>deletePost(post._id)}/>))}
+                                <Recommendations class="smallScreen"/>
+                            </div>
+                            )
+                        }
+                        <Recommendations class="largeScreen"/>
+                    </div>
+                </div>          
             </div>
-        </div>
-    )
+        )
+    } else if(feed&&feed.length<1){
+        return(
+            <div className="homepage">
+                <NavBar/>
+                <div className="outerDiv newUser">
+                    <h1>Follow people to get posts from them</h1>
+                    <Recommendations/>
+                </div>
+            </div>
+        )
+    }
 }
