@@ -1,6 +1,6 @@
 import express from "express";
 import { getUserController, getFollowersController, getFollowingsController,
-followController, acceptRequestController, searchUserController } from "../controllers/users.js";
+followController, acceptRequestController, searchUserController, getRecUserController } from "../controllers/users.js";
 import { verifyToken } from "../middleware/verifyToken.js";
 export const router = express.Router();
 router.get("/:username", getUserController);
