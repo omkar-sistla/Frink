@@ -21,7 +21,7 @@ export default function NavBar(){
     const handleSearch = async()=>{
         try{
             if (searchTerm!==""){
-                const response = await axios.get(`https://frink-backend.vercel.app/users/searchuser/${searchTerm}`);
+                const response = await axios.get(`${process.env.REACT_APP_SERVER}/users/searchuser/${searchTerm}`);
                 setsearchResults(response.data);
                 console.log(response.data);
                 console.log(searchResults);

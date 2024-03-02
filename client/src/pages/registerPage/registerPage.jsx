@@ -57,7 +57,7 @@ export default function RegisterPage(){
                 registrationData.profilePhoto = imagelink;
             }
             console.log(registrationData);
-            const response=await(axios.post("https://frink-backend.vercel.app/register",registrationData,{withCredentials:true}));
+            const response=await(axios.post(`${process.env.REACT_APP_SERVER}/register`,registrationData,{withCredentials:true}));
             alert(response.data.message); 
             setLoading(false);
             window.location.href="/";

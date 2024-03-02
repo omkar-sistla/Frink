@@ -36,7 +36,7 @@ export default function NewPost(){
                 const imagelink = imageResponse.data.secure_url;
                 postData.img=imagelink;
             }
-            const response = await axios.post("https://frink-backend.vercel.app/newpost", postData, {
+            const response = await axios.post(`${process.env.REACT_APP_SERVER}/newpost`, postData, {
                 headers: { Authorization: `Frink ${token}` },
                 withCredentials: true
             });

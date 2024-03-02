@@ -10,6 +10,8 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { setLogin } from './Redux/reducer';
 function App() {
+  const superra = process.env.REACT_APP_SERVER
+  console.log(superra);
   const dispatch = useDispatch();
   const mode = useSelector((state)=>state.mode);
   const isAuth = Boolean(useSelector((state) => state.token));
@@ -17,7 +19,7 @@ function App() {
   useEffect(()=>{
     const autoLogout = async()=>{
       try{
-        const response = await axios.get("https://frink-backend.vercel.app/",{headers: { Authorization: `Frink ${token}` }});
+        const response = await axios.get(`${process.env.REACT_APP_SERVER}/`,{headers: { Authorization: `Frink ${token}` }});
         if (response.data === "Please Login"){
           dispatch(setLogin({
             user:null,

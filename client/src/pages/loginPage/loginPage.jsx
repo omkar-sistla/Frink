@@ -28,7 +28,7 @@ export default function LoginPage(){
         setErrorMsg("");
         try{
             const loggedInResponse = await axios.post(
-                "https://frink-backend.vercel.app/login", signInValues, 
+                `${process.env.REACT_APP_SERVER}/login`, signInValues, 
                 {
                     headers:{"Content-Type": "application/json"},
                     withCredentials: true

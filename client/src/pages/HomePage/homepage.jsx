@@ -12,7 +12,7 @@ export default function HomePage(){
     const token = useSelector((state)=>state.token);
     const getFeed = async()=>{
         try{
-            const response = await axios.get("https://frink-backend.vercel.app/feed",{headers: { Authorization: `Frink ${token}` }});
+            const response = await axios.get(`${process.env.REACT_APP_SERVER}/feed`,{headers: { Authorization: `Frink ${token}` }});
             setFeed(response.data);
         } catch(err){
             console.log(err.response);
@@ -23,7 +23,7 @@ export default function HomePage(){
     },[])
     const deletePost = async(postId)=>{
         try{
-            const response = await axios.delete(`https://frink-backend.vercel.app/${postId}/delete`,{headers: { Authorization: `Frink ${token}` }});
+            const response = await axios.delete(`${process.env.REACT_APP_SERVER}/${postId}/delete`,{headers: { Authorization: `Frink ${token}` }});
             setFeed(feed.filter(post => post._id !== postId));
         } catch(err){
             console.log(err);

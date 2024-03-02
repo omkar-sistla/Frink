@@ -20,7 +20,7 @@ export default function Recommendations(props){
     const user = useSelector((state)=>state.user);
     const getRec = async()=>{
         try{
-            const response = await axios.get(`https://frink-backend.vercel.app/users/${user.id}/recommendations`);
+            const response = await axios.get(`${process.env.REACT_APP_SERVER}/users/${user.id}/recommendations`);
             setRec(response.data);
         } catch(err){
             console.log(err.message);

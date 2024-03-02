@@ -15,7 +15,7 @@ const env = dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 app.use(cors({
-    origin:"https://frink.vercel.app",
+    origin:process.env.ORIGIN,
     credentials:true
 }));
 app.use(express.json());
