@@ -15,6 +15,13 @@ export default function ProfilePage(){
     const user = useSelector((state)=>state.user);
     const token = useSelector((state)=>state.token);
     const [userProfile,setUserProfile] = useState(null);
+    const logout = () => {
+        dispatch(setLogin({
+            user:null,
+            token:null
+        }));
+        navigate("/");
+    }
     const follow = async () => {
         if (user && user.id && token) {
             try {
@@ -92,9 +99,12 @@ export default function ProfilePage(){
                                 <img src={user.profilePhoto} className="profilePageProfilePhoto small" alt="profile pic"/>
                                 <div className="innerRow">
                                     <p className="username">{user.username}</p>
-                                    <button>Edit profile</button>
+                                    <div className="buttons">
+                                        <button>Edit profile</button>
+                                        <button className="logout" onClick={logout}>Log Out</button>
+                                    </div>
+                                    
                                 </div>
-
                             </div>
                             <div className="row countsRow">
                                 <div className="counts">

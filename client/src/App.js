@@ -10,8 +10,6 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { setLogin } from './Redux/reducer';
 function App() {
-  const superra = process.env.REACT_APP_SERVER
-  console.log(superra);
   const dispatch = useDispatch();
   const mode = useSelector((state)=>state.mode);
   const isAuth = Boolean(useSelector((state) => state.token));
