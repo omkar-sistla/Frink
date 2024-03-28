@@ -16,3 +16,24 @@
     height: 100%;
     object-fit: cover;
 }
+.postsGrid .likesPreview{
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    background-color: rgba(44, 44, 44, 0.708);
+    user-select: none;
+    cursor: pointer;
+}
+.postsGrid .likesPreview p{
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+}
+.postsGrid .likesPreview p span{
+    font-size: 20px;
+    align-self: flex-end;
+}

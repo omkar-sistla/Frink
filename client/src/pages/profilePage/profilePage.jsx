@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import './profilePage.css';
@@ -21,6 +20,13 @@ export default function ProfilePage(){
             token:null
         }));
         navigate("/");
+    }
+    const getFollowersAndFollowings = async(userProfile, type)=>{
+        if (user && user.id && token){
+                navigate(`/profile/${userProfile.username}/${type}`)
+        } else {
+            navigate("/");
+        }
     }
     const follow = async () => {
         if (user && user.id && token) {
@@ -111,11 +117,11 @@ export default function ProfilePage(){
                                     <p className="count">{user.posts}</p>
                                     <p className="field">posts</p>
                                 </div>
-                                <div className="counts">
-                                    <p className="count">{user.followers}</p>
+                                <div className="counts" onClick={() => getFollowersAndFollowings(user,"followers")}>
+                                    <p className="count" >{user.followers}</p>
                                     <p className="field">followers</p>
                                 </div>
-                                <div className="counts">
+                                <div className="counts" onClick={() => getFollowersAndFollowings(user,"following")}>
                                     <p className="count">{user.followings}</p>
                                     <p className="field">following</p>
                                 </div>
@@ -157,11 +163,11 @@ export default function ProfilePage(){
                                     <p className="count">{userProfile.posts}</p>
                                     <p className="field">posts</p>
                                 </div>
-                                <div className="counts">
+                                <div className="counts" onClick={() => getFollowersAndFollowings(userProfile,"followers")}>
                                     <p className="count">{userProfile.followers}</p>
                                     <p className="field">followers</p>
                                 </div>
-                                <div className="counts">
+                                <div className="counts" onClick={() => getFollowersAndFollowings(userProfile,"following")}>
                                     <p className="count">{userProfile.followings}</p>
                                     <p className="field">following</p>
                                 </div>
@@ -181,6 +187,4 @@ export default function ProfilePage(){
             </div>
         )
     }
-
-
 }

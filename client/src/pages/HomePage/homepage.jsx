@@ -14,6 +14,7 @@ export default function HomePage(){
         try{
             const response = await axios.get(`${process.env.REACT_APP_SERVER}/feed`,{headers: { Authorization: `Frink ${token}` }});
             setFeed(response.data);
+            console.log(response.data);
         } catch(err){
             console.log(err.response);
         }

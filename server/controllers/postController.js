@@ -21,11 +21,36 @@ export const createPostController = async(req,res) => {
     } catch (err) {
         res.status(404).json({ message: err.message });
     }
-}
+};
+
+export const getPostController = async(req,res)=>{
+    const {postId} = req.params;
+    const userId = req.user.id;
+    try{
+        const post = await Post.findById(postId);
+        if (post){
+            const postUser = post.userId;
+            const user = await User.findById(postUser);
+            const userDetails = {
+                "_id": user._id,
+                "username": user.username,
+                "firstName": user.firstName,
+                "lastName": user.lastName,
+                "profilePhoto": user.profilePhoto
+            };
+            post._doc.userId = userDetails;
+            res.status(200).json(post);
+        }
+        else{
+            res.status(404).json({message: 'Post not found'})
+        }
+    } catch(err){
+        res.status(500).json({ message: err.message });
+    }
+};
 
 export const deletePostController = async (req, res) => {
     const postId = req.params.id;
-    console.log(postId);
     try {
         const post = await Post.findById(postId);
         const commentIds = post.comments; 

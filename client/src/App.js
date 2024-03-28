@@ -9,6 +9,8 @@ import NewPost from './components/uploadPost/uploadPost';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { setLogin } from './Redux/reducer';
+import FollowersPage from './pages/followersPage/followersPage';
+import PostPage from './pages/postPage/postPage';
 function App() {
   const dispatch = useDispatch();
   const mode = useSelector((state)=>state.mode);
@@ -42,6 +44,9 @@ function App() {
           <Route path="/home" element={isAuth ? <HomePage /> : <Navigate to="/"/>}/>
           <Route path="/profile/:username" element={<ProfilePage/>}/>
           <Route path="/newpost" element={isAuth ? <NewPost/> : <Navigate to="/"/>}/>
+          <Route path="profile/:username/followers" element={isAuth ? <FollowersPage type="followers"/> : <Navigate to="/"/>}/>
+          <Route path="profile/:username/following" element={isAuth ? <FollowersPage type="followings"/> : <Navigate to="/"/>}/>
+          <Route path="/posts/:postId" element={<PostPage/>}/>
         </Routes>
       </Router>
     </div>

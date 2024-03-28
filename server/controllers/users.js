@@ -51,18 +51,18 @@ export const searchUserController = async(req,res)=>{
 
 export const getFollowersController = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { username } = req.params;
         const userId = req.query.id;
         if (userId !== req.user.id){
             res.status(500).json("Forbidden User");
         } else{
-            const user = await User.findById(id);
+            const user = await User.findOne({username:username});
             const followers = await Promise.all(
                 user.followers.map((id) => User.findById(id))
             );
             const formattedFollowers = followers.map(
-                ({ _id, firstName, lastName, profilePhoto }) => {
-                return { _id, firstName, lastName, profilePhoto };
+                ({ _id, firstName, lastName, profilePhoto, username }) => {
+                return { _id, firstName, lastName, profilePhoto, username };
                 }
             );
             res.status(200).json(formattedFollowers);
@@ -79,15 +79,14 @@ export const getFollowingsController = async (req, res) => {
         if (userId !== req.user.id){
             res.status(500).json("Forbidden User");
         } else{
-            const { id } = req.params;
-            const user = await User.findById(id);
-        
+            const { username } = req.params;
+            const user = await User.findOne({username:username});
             const followings = await Promise.all(
                 user.followings.map((id) => User.findById(id))
             );
             const formattedFollowings = followings.map(
-                ({ _id, firstName, lastName, profilePhoto }) => {
-                return { _id, firstName, lastName, profilePhoto };
+                ({ _id, firstName, lastName, profilePhoto, username }) => {
+                return { _id, firstName, lastName, profilePhoto, username };
                 }
             );
             res.status(200).json(formattedFollowings);

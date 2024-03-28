@@ -1,0 +1,17 @@
+.postPage{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+.postPage .navbar{
+    position: fixed;
+}
+.postPage .post{
+    margin:auto;
+}
+@media(max-width:600px){
+    .postPage .post{
+        margin-top: 58px;
+        margin-bottom: 70px;
+    }
+}
