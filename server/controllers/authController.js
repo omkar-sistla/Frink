@@ -67,7 +67,7 @@ export const loginController = async(req,res)=>{
                     "city":user.city,
                     "profilePhoto":user.profilePhoto,
                     "id":user._id,
-                    "userPosts":user.posts,
+                    "userPosts":user.posts.reverse(),
                 };
                 console.log(userDetails);
                 sendToken(userDetails, res);

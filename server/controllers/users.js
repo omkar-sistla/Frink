@@ -21,7 +21,7 @@ export const getUserController = async (req, res) => {
                 "isFollowing":isFollowing,
                 "isRequested":isRequested,
                 "isFollower":isFollower,
-                "profileposts":(isFollowing || !user.isPrivate) ? user.posts : null,
+                "profileposts":(isFollowing || !user.isPrivate) ? user.posts.reverse() : null,
             };
             res.status(200).json(userDetails);
         } else{

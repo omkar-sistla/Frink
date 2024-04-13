@@ -46,7 +46,7 @@ function App() {
           <Route path="/newpost" element={isAuth ? <NewPost/> : <Navigate to="/"/>}/>
           <Route path="profile/:username/followers" element={isAuth ? <FollowersPage type="followers"/> : <Navigate to="/"/>}/>
           <Route path="profile/:username/following" element={isAuth ? <FollowersPage type="followings"/> : <Navigate to="/"/>}/>
-          <Route path="/posts/:postId" element={<PostPage/>}/>
+          <Route path="/posts/:postId" element={isAuth ? <PostPage/> : <Navigate to="/"/>}/>
         </Routes>
       </Router>
     </div>

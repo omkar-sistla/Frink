@@ -31,15 +31,22 @@ export const getPostController = async(req,res)=>{
         if (post){
             const postUser = post.userId;
             const user = await User.findById(postUser);
-            const userDetails = {
-                "_id": user._id,
-                "username": user.username,
-                "firstName": user.firstName,
-                "lastName": user.lastName,
-                "profilePhoto": user.profilePhoto
-            };
-            post._doc.userId = userDetails;
-            res.status(200).json(post);
+            const isFollower = user.followers.includes(userId);
+            if(userId && user.isPrivate && !isFollower){
+                res.status(200).send("Private Post")
+            } else if(!userId && user.isPrivate){
+                res.status(200).send("Please Login")
+            } else{
+                const userDetails = {
+                    "_id": user._id,
+                    "username": user.username,
+                    "firstName": user.firstName,
+                    "lastName": user.lastName,
+                    "profilePhoto": user.profilePhoto
+                };
+                post._doc.userId = userDetails;
+                res.status(200).json(post);
+            }
         }
         else{
             res.status(404).json({message: 'Post not found'})

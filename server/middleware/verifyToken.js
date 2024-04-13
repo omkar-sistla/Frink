@@ -3,15 +3,13 @@ import jwt from 'jsonwebtoken';
 export const verifyToken = async(req,res,next) => {
     try{
         let token = req.header("Authorization");
-        console.log(token);
         if(!token){
             return res.status(403).send("Please Login");
         }
 
         if (token.startsWith("Frink ")){
             token = token.slice(6, token.length).trimLeft();
-            console.log(token);
-            if(!token){
+            if(token==="null"){
                 return res.status(403).send("Please Login");
             }
         }
@@ -22,7 +20,6 @@ export const verifyToken = async(req,res,next) => {
             return res.status(403).send("Please Login");
         } else{
             const expiresDate = new Date(expires);
-            console.log(expiresDate);
             if(expiresDate<currentDate){
                 return res.status(403).send("Please login");   
             } else{
@@ -31,7 +28,6 @@ export const verifyToken = async(req,res,next) => {
         }  
         next();
     } catch(err){
-        console.log(err);
         res.status(500).json("Internal Server Error");
     }
 };
