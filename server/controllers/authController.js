@@ -60,6 +60,7 @@ export const loginController = async(req,res)=>{
                     "username":user.username,
                     "posts":user.posts.length,
                     "displayName":user.firstName+" "+user.lastName,
+                    "date_of_birth": user.date_of_birth,
                     "email":user.email,
                     "followers":user.followers.length,
                     "followings":user.followings.length,
@@ -113,7 +114,8 @@ export const getUpdatedUser = async(req, res) => {
                 "city":user.city,
                 "profilePhoto":user.profilePhoto,
                 "id":user._id,
-                "userPosts":user.posts,
+                "userPosts":user.posts.reverse(),
+                "date_of_birth":user.date_of_birth,
             };
             sendToken(userDetails, res);
         } else{

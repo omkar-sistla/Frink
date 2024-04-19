@@ -30,7 +30,6 @@ export default function LoginPage(){
             const loggedInResponse = await axios.post(
                 `${process.env.REACT_APP_SERVER}/login`, signInValues, 
                 {
-                    headers:{"Content-Type": "application/json"},
                     withCredentials: true
                 }
                 );

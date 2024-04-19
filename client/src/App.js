@@ -11,6 +11,7 @@ import axios from 'axios';
 import { setLogin } from './Redux/reducer';
 import FollowersPage from './pages/followersPage/followersPage';
 import PostPage from './pages/postPage/postPage';
+import EditProfilePage from './pages/editProfilePage/editProfilePage';
 function App() {
   const dispatch = useDispatch();
   const mode = useSelector((state)=>state.mode);
@@ -47,6 +48,7 @@ function App() {
           <Route path="profile/:username/followers" element={isAuth ? <FollowersPage type="followers"/> : <Navigate to="/"/>}/>
           <Route path="profile/:username/following" element={isAuth ? <FollowersPage type="followings"/> : <Navigate to="/"/>}/>
           <Route path="/posts/:postId" element={isAuth ? <PostPage/> : <Navigate to="/"/>}/>
+          <Route path="/acoounts/edit" element={isAuth ? <EditProfilePage/> : <Navigate to="/"/>}/>
         </Routes>
       </Router>
     </div>

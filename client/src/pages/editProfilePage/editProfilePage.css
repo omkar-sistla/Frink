@@ -1,0 +1,224 @@
+.editProfilePage{
+    display: flex;
+}
+.editProfilePage .navbar{
+    position: fixed;
+}
+.editProfilePage .pageWrapper{
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.editProfilePage .editProfileHeader{
+    display: flex;
+    width: 500px;
+    justify-content: flex-start;
+}
+.editProfilePage .editProfileHeader h2{
+    margin-bottom: 0px;
+}
+.editProfilePage .userDetails{
+    display: flex;
+    width: 490px;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #EFEFEF;
+    border-radius: 15px;
+}
+.dark .editProfilePage .userDetails{
+    background-color: rgb(35, 35, 35);
+}
+.editProfilePage .userDetails .user{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.editProfilePage .userDetails .profilephoto{
+    height: 60px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.editProfilePage .userDetails .user p{
+    margin: 0px;
+}
+.editProfilePage .userDetails .user .displayName{
+    font-size: 14px;
+    color: #737373;
+}
+.editProfilePage .userDetails button{
+    height: fit-content;
+    align-self: center;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: rgb(67, 184, 231);
+    cursor: pointer;
+    color: white;
+    font-weight: 551;
+}
+.editProfilePage .userDetails button:hover{
+    background-color: rgb(22, 172, 231);
+}
+.dark .editProfilePage .userDetails button{
+    background-color: rgb(63, 102, 117);
+}
+.dark .editProfilePage .userDetails button:hover{
+    background-color: #2f6174;
+}
+.editProfilePage .profileEditField{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 520px;
+}
+.editProfilePage .profileEditField textarea{
+    resize: none;
+    height: 50px;
+    padding: 15px 15px;
+    border-radius: 8px;
+    border: 1px solid rgb(219, 219, 219);
+}
+.editProfilePage .profileEditField input{
+    height: 40px;
+    padding: 0px 15px;
+    border-radius: 8px;
+    border: 1px solid rgb(219, 219, 219);
+}
+.dark .editProfilePage .profileEditField input,
+.dark .editProfilePage .profileEditField textarea{
+    border: 1px solid rgb(61, 61, 61);
+    background-color: black;
+    color: white;
+}
+.editProfilePage .profileEditField input:focus,
+.editProfilePage .profileEditField textarea:focus{
+    outline: 0px;
+    border: 1px solid black;
+}
+.dark .editProfilePage .profileEditField input:focus,
+.dark .editProfilePage .profileEditField textarea:focus{
+    border: 1px solid rgb(129, 129, 129);
+}
+.editProfilePage .buttonWrapper{
+    width: 520px;
+    display: flex;
+    justify-content: flex-end;
+}
+.editProfilePage .buttonWrapper .submit{
+    padding: 5px 15px;
+    border-radius: 8px;
+    margin: 0px;
+    border: 0;
+    background-color: rgb(67, 184, 231);
+    cursor: pointer;
+    color: white;
+}
+.dark .editProfilePage .buttonWrapper .submit{
+    background-color: rgb(63, 102, 117);
+}
+.editProfilePage .buttonWrapper .submit:hover{
+    background-color: rgb(22, 172, 231);
+}
+.dark .editProfilePage .buttonWrapper .submit:hover{
+    background-color: #2f6174;
+}
+.editProfilePage .buttonWrapper .submit:disabled{
+    display: none;
+}
+.modalWrapper{
+    background-color: rgba(0, 0, 0, 0.777);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 9999;
+}
+
+.editProfilePage .changeProfilePhoto,
+.editProfilePage .loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 500px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+.editProfilePage .loading{
+    width: 100px;
+    height: 100px;
+    border: none;
+    opacity: 45%;
+    box-shadow: inset 0px 0px 25px black;
+}
+.dark .editProfilePage .changeProfilePhoto{
+    background-color: rgb(39, 39, 39);
+}
+.editProfilePage .modalHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 15px;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.108);
+}
+.dark .editProfilePage .modalHeader{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.108);
+}
+.editProfilePage .modalHeader span{
+    cursor: pointer;
+}
+.editProfilePage .changeOptions{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0px 0px 15px 0px;
+}
+.editProfilePage .changeOptions .remove{
+    color: red;
+    cursor: pointer;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.108);
+    text-align: center;
+    margin-top: 0px;
+    padding: 15px 0px;
+}
+.dark .editProfilePage .changeOptions .remove{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.108);
+}
+.editProfilePage .changeOptions .fileInput .inputContainer{
+    border: none;
+    flex-direction: column-reverse;
+}
+.editProfilePage .changeOptions .fileInput .inputContainer label{
+    font-weight: normal;
+    font-size: 14px;
+}
+.editProfilePage .loading{
+    margin: auto;
+}
+@media(max-width:600px){
+    .editProfilePage .pageWrapper{
+        margin-top: 48px;
+        margin-bottom: 64px;
+        width: 100vw;
+        gap: 13px;
+    }
+    .editProfilePage .pageWrapper .editProfileHeader{
+        width: calc(100% - 30px);
+    }
+    .editProfilePage .pageWrapper .userDetails{
+        width: calc(100vw - 55px);
+    }
+    .editProfilePage .pageWrapper .profileEditField,
+    .editProfilePage .buttonWrapper,
+    .editProfilePage .changeProfilePhoto{
+        width: calc(100vw - 30px);
+    }
+}

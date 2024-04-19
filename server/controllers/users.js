@@ -60,6 +60,7 @@ export const getFollowersController = async (req, res) => {
             const followers = await Promise.all(
                 user.followers.map((id) => User.findById(id))
             );
+            console.log(followers);
             const formattedFollowers = followers.map(
                 ({ _id, firstName, lastName, profilePhoto, username }) => {
                 return { _id, firstName, lastName, profilePhoto, username };
@@ -84,6 +85,7 @@ export const getFollowingsController = async (req, res) => {
             const followings = await Promise.all(
                 user.followings.map((id) => User.findById(id))
             );
+            console.log(followings);
             const formattedFollowings = followings.map(
                 ({ _id, firstName, lastName, profilePhoto, username }) => {
                 return { _id, firstName, lastName, profilePhoto, username };
@@ -92,6 +94,7 @@ export const getFollowingsController = async (req, res) => {
             res.status(200).json(formattedFollowings);
         }
     } catch (err) {
+        console.log(err);
         res.status(404).json({ message: err.message });
     }
 };

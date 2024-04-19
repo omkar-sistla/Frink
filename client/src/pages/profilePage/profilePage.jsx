@@ -106,7 +106,7 @@ export default function ProfilePage(){
                                 <div className="innerRow">
                                     <p className="username">{user.username}</p>
                                     <div className="buttons">
-                                        <button>Edit profile</button>
+                                        <button onClick={()=>navigate("/acoounts/edit")}>Edit profile</button>
                                         <button className="logout" onClick={logout}>Log Out</button>
                                     </div>
                                     

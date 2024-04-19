@@ -20,11 +20,13 @@
     width: 100%;
     aspect-ratio: 1/1;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 45px;
     align-items: center;
     position: absolute;
     top: 0px;
-    background-color: rgba(44, 44, 44, 0.708);
+    background-color: rgba(65, 65, 65, 0.708);
+    color: white;
     user-select: none;
     cursor: pointer;
 }
