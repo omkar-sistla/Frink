@@ -85,7 +85,7 @@ export const getFeedController = async(req,res) => {
         const followings = user.followings;
         followings.push(userId);
         const tenDaysAgo = new Date();
-        tenDaysAgo.setDate(tenDaysAgo.getDate() - 100);
+        tenDaysAgo.setDate(tenDaysAgo.getDate() - 200);
         const feed = await User.find({
             _id: { $in: followings },
             'posts.createdAt': { $gte: tenDaysAgo },
