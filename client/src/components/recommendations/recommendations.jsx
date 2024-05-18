@@ -7,11 +7,11 @@ function Recommendation(props){
     const navigate = useNavigate()
     return(
         <div className="recommendation">
-            <div className="user">
+            <div className="user" onClick={()=>navigate(`/profile/${props.username}`)}>
                 <img src={props.img} alt={props.username}/>
-                <p onClick={()=>navigate(`/profile/${props.username}`)}>{props.username}</p>
+                <p >{props.username}</p>
             </div>
-            <p className="follow">Follow</p>
+            
         </div>
     )
 }
