@@ -2,6 +2,14 @@
     display: flex;
     gap: 100px;
 }
+.profilepage .navbar{
+    position: fixed;
+}
+.profilepage .wrapper{
+    margin-left: 270px;
+    width: calc(100% - 270px);
+    padding-bottom: 50px;
+}
 .profilepage .profile{
     width: 950px;
     margin: auto;
@@ -82,10 +90,15 @@
 .profilepage .profileHeader .displayname{
     font-weight: 500;
 }
+
 @media(max-width:900px){
     .profilepage{
         display: flex;
         gap: 0px;
+    }
+    .profilepage .wrapper{
+        margin-left: 68px;
+        width: calc(100% - 68px);
     }
     .profilepage .profile{
         width: 90%;
@@ -106,6 +119,11 @@
     .profilepage{
         flex-direction: column;
         margin-top: 35px;
+    }
+    .profilepage .wrapper{
+        margin-bottom: 62px;
+        margin-left: 0px;
+        width: 100%;
     }
     .profilepage .profile{
         width: 100%;

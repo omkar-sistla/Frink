@@ -96,43 +96,45 @@ export default function ProfilePage(){
         return(
             <div className="profilepage">
                 <NavBar/>
-                <div className="profile">
-                    {user && 
-                    <div className="profileHeader">
-                        <img src={user.profilePhoto} className="profilePageProfilePhoto" alt="profile pic"/>
-                        <div className="profileDetails">
-                            <div className="row">
-                                <img src={user.profilePhoto} className="profilePageProfilePhoto small" alt="profile pic"/>
-                                <div className="innerRow">
-                                    <p className="username">{user.username}</p>
-                                    <div className="buttons">
-                                        <button onClick={()=>navigate("/acoounts/edit")}>Edit profile</button>
-                                        <button className="logout" onClick={logout}>Log Out</button>
+                <div className="wrapper">
+                    <div className="profile">
+                        {user && 
+                        <div className="profileHeader">
+                            <img src={user.profilePhoto} className="profilePageProfilePhoto" alt="profile pic"/>
+                            <div className="profileDetails">
+                                <div className="row">
+                                    <img src={user.profilePhoto} className="profilePageProfilePhoto small" alt="profile pic"/>
+                                    <div className="innerRow">
+                                        <p className="username">{user.username}</p>
+                                        <div className="buttons">
+                                            <button onClick={()=>navigate("/acoounts/edit")}>Edit profile</button>
+                                            <button className="logout" onClick={logout}>Log Out</button>
+                                        </div>
+                                        
                                     </div>
-                                    
+                                </div>
+                                <div className="row countsRow">
+                                    <div className="counts">
+                                        <p className="count">{user.posts}</p>
+                                        <p className="field">posts</p>
+                                    </div>
+                                    <div className="counts" onClick={() => getFollowersAndFollowings(user,"followers")}>
+                                        <p className="count" >{user.followers}</p>
+                                        <p className="field">followers</p>
+                                    </div>
+                                    <div className="counts" onClick={() => getFollowersAndFollowings(user,"following")}>
+                                        <p className="count">{user.followings}</p>
+                                        <p className="field">following</p>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <p className="displayname">{user.displayName}</p>
+                                    <p>{user.bio}</p>
                                 </div>
                             </div>
-                            <div className="row countsRow">
-                                <div className="counts">
-                                    <p className="count">{user.posts}</p>
-                                    <p className="field">posts</p>
-                                </div>
-                                <div className="counts" onClick={() => getFollowersAndFollowings(user,"followers")}>
-                                    <p className="count" >{user.followers}</p>
-                                    <p className="field">followers</p>
-                                </div>
-                                <div className="counts" onClick={() => getFollowersAndFollowings(user,"following")}>
-                                    <p className="count">{user.followings}</p>
-                                    <p className="field">following</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <p className="displayname">{user.displayName}</p>
-                                <p>{user.bio}</p>
-                            </div>
-                        </div>
-                    </div>}
-                    <PostsGrid posts={user.userPosts}/>
+                        </div>}
+                        <PostsGrid posts={user.userPosts}/>
+                    </div>
                 </div>
             </div>
         )
@@ -140,49 +142,51 @@ export default function ProfilePage(){
         return(
             <div className="profilepage">
                 <NavBar/>
-                <div className="profile otherUser">
-                    {userProfile && 
-                    <div className="profileHeader">
-                        <img src={userProfile.profilePhoto} className="profilePageProfilePhoto" alt="profile pic"/>
-                        <div className="profileDetails">
-                            <div className="row">
-                                <img src={userProfile.profilePhoto} className="profilePageProfilePhoto small" alt="profile pic"/>
-                                <div className="innerRow">
-                                    <p className="username">{userProfile.username}</p>
-                                    {
-                                        userProfile.isFollowing 
-                                            ? <button onClick={follow}>Unfollow</button>
-                                            : userProfile.isRequested 
-                                                ? <button>Requested</button>
-                                                : <button className="follow" onClick={follow}>Follow</button>
-                                    }
+                <div className="wrapper">
+                    <div className="profile otherUser">
+                        {userProfile && 
+                        <div className="profileHeader">
+                            <img src={userProfile.profilePhoto} className="profilePageProfilePhoto" alt="profile pic"/>
+                            <div className="profileDetails">
+                                <div className="row">
+                                    <img src={userProfile.profilePhoto} className="profilePageProfilePhoto small" alt="profile pic"/>
+                                    <div className="innerRow">
+                                        <p className="username">{userProfile.username}</p>
+                                        {
+                                            userProfile.isFollowing 
+                                                ? <button onClick={follow}>Unfollow</button>
+                                                : userProfile.isRequested 
+                                                    ? <button>Requested</button>
+                                                    : <button className="follow" onClick={follow}>Follow</button>
+                                        }
+                                    </div>
+                                </div>
+                                <div className="row countsRow">
+                                    <div className="counts">
+                                        <p className="count">{userProfile.posts}</p>
+                                        <p className="field">posts</p>
+                                    </div>
+                                    <div className="counts" onClick={() => getFollowersAndFollowings(userProfile,"followers")}>
+                                        <p className="count">{userProfile.followers}</p>
+                                        <p className="field">followers</p>
+                                    </div>
+                                    <div className="counts" onClick={() => getFollowersAndFollowings(userProfile,"following")}>
+                                        <p className="count">{userProfile.followings}</p>
+                                        <p className="field">following</p>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <p className="displayname">{userProfile.displayName}</p>
+                                    <p>{userProfile.bio}</p>
                                 </div>
                             </div>
-                            <div className="row countsRow">
-                                <div className="counts">
-                                    <p className="count">{userProfile.posts}</p>
-                                    <p className="field">posts</p>
-                                </div>
-                                <div className="counts" onClick={() => getFollowersAndFollowings(userProfile,"followers")}>
-                                    <p className="count">{userProfile.followers}</p>
-                                    <p className="field">followers</p>
-                                </div>
-                                <div className="counts" onClick={() => getFollowersAndFollowings(userProfile,"following")}>
-                                    <p className="count">{userProfile.followings}</p>
-                                    <p className="field">following</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <p className="displayname">{userProfile.displayName}</p>
-                                <p>{userProfile.bio}</p>
-                            </div>
-                        </div>
-                    </div>}
-                    {!userProfile.isPrivate || userProfile.isFollowing 
-                    ? <div>
-                    {<PostsGrid posts={userProfile.profileposts}/>}
-                    </div>                    
-                    :<div>This account is Private</div>}
+                        </div>}
+                        {!userProfile.isPrivate || userProfile.isFollowing 
+                        ? <div>
+                        {<PostsGrid posts={userProfile.profileposts}/>}
+                        </div>                    
+                        :<div>This account is Private</div>}
+                    </div>
                 </div>
             </div>
         )
